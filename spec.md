@@ -98,7 +98,17 @@ Data mining trực tiếp từ chatlog toàn bộ khóa học ghi nhận các co
 - Ngưỡng quyết định: nếu độ liên quan/độ tin cậy ≥ ngưỡng đặt trước → trả lời kèm trích dẫn; nếu dưới ngưỡng → tag admin, không tự trả lời.
 - Output: Tin nhắn trả lời trong cùng thread/kênh, kèm nguồn (tên tài liệu + vị trí).
 
+### §4b. Nguyên tắc HAX/PAIR Áp Dụng (Cải tiến so với Bot cũ)
+
+| Nguyên tắc HAX/PAIR | Mô tả & Cách giải quyết điểm yếu của Bot Kute hiện tại | Áp dụng cụ thể vào giao diện/luồng Bot |
+|---|---|---|
+| **G1: Make clear what system can do** | Đảm bảo học viên hiểu rõ ngay phạm vi hỗ trợ của Bot từ lần tương tác đầu tiên. | Khi học viên hỏi năng lực hoặc chào bot, Bot phản hồi danh mục 4 nhóm tính năng chính + ví dụ câu hỏi mẫu. |
+| **G2: Make clear how well system can do** | Tránh học viên lo ngại AI bịa đặt (56% lo lắng). | Mọi câu trả lời bắt buộc đính kèm trích dẫn nguồn cụ thể `[Tên file.md # Mục X]`. |
+| **G8: Support efficient dismissal** | Tránh bot spam rác kênh chat (20% học viên lo ngại). | Bot chỉ trả lời trong kênh chỉ định hoặc khi `@mention`; trả lời trong dạng Thread thu gọn. |
+| **G10: Scope cautiously when uncertain** | Tránh việc bot cố đoán mò quy định khi thông tin thiếu căn cứ. | RAG confidence score < 0.75 $\rightarrow$ Bot từ chối trả lời và tự động tag `@TA-Support`. |
+
 ---
+
 
 ## §5. Chỗ khó (kỹ thuật)
 

@@ -1,0 +1,187 @@
+[
+  {
+    "id": 1,
+    "category": "happy_path",
+    "difficulty": "normal",
+    "question": "deadline nộp bài CP4 là khi nào?",
+    "expected_source": "02-guide.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 2,
+    "category": "happy_path",
+    "difficulty": "normal",
+    "question": "lịch học Workshop tuần này vào thứ mấy?",
+    "expected_source": "05_quy_dinh_khoa_hoc_ai20k_build_phase.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 3,
+    "category": "happy_path",
+    "difficulty": "normal",
+    "question": "lịch Mentoring Duty kiểm tra tiến độ là khi nào?",
+    "expected_source": "05_quy_dinh_khoa_hoc_ai20k_build_phase.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 4,
+    "category": "happy_path",
+    "difficulty": "normal",
+    "question": "cách tạo ticket hỗ trợ trên Discord gõ lệnh gì?",
+    "expected_source": "02_cu_phap_lenh_discord_va_tao_ticket.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 5,
+    "category": "happy_path",
+    "difficulty": "normal",
+    "question": "link xem slide bài giảng ở đâu?",
+    "expected_source": "05_quy_dinh_khoa_hoc_ai20k_build_phase.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 6,
+    "category": "happy_path",
+    "difficulty": "normal",
+    "question": "trang làm bài thực hành Codelabs là gì?",
+    "expected_source": "05_quy_dinh_khoa_hoc_ai20k_build_phase.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 7,
+    "category": "happy_path",
+    "difficulty": "normal",
+    "question": "cách đặt tên Zoom học tập thế nào cho đúng?",
+    "expected_source": "05_quy_dinh_khoa_hoc_ai20k_build_phase.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 8,
+    "category": "happy_path",
+    "difficulty": "normal",
+    "question": "tên repo GitHub của nhóm phải đặt như thế nào?",
+    "expected_source": "05_quy_dinh_khoa_hoc_ai20k_build_phase.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 9,
+    "category": "happy_path",
+    "difficulty": "domain_specific",
+    "question": "bị lỗi ERROR: Repository not found khi git clone thì làm sao?",
+    "expected_source": "03_huong_dan_go_loi_git_ssh.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 10,
+    "category": "happy_path",
+    "difficulty": "domain_specific",
+    "question": "repo của nhóm thiếu file pyproject.toml thì xử lý thế nào?",
+    "expected_source": "04_huong_dan_moi_truong_python_va_ai_log.md",
+    "expected_behavior": "answer_with_citation"
+  },
+  {
+    "id": 11,
+    "category": "ambiguous",
+    "difficulty": "ambiguous",
+    "question": "nộp bài ở đâu?",
+    "expected_behavior": "ask_clarification"
+  },
+  {
+    "id": 12,
+    "category": "ambiguous",
+    "difficulty": "ambiguous",
+    "question": "deadline khi nào?",
+    "expected_behavior": "ask_clarification"
+  },
+  {
+    "id": 13,
+    "category": "ambiguous",
+    "difficulty": "ambiguous",
+    "question": "lỗi SSH sửa làm sao?",
+    "expected_behavior": "ask_clarification"
+  },
+  {
+    "id": 14,
+    "category": "ambiguous",
+    "difficulty": "ambiguous",
+    "question": "tạo ticket không được?",
+    "expected_behavior": "ask_clarification"
+  },
+  {
+    "id": 15,
+    "category": "ambiguous",
+    "difficulty": "ambiguous",
+    "question": "bài tập tuần này làm gì?",
+    "expected_behavior": "ask_clarification"
+  },
+  {
+    "id": 16,
+    "category": "out_of_scope",
+    "difficulty": "out_of_scope",
+    "question": "viết hộ mình đoạn code RAG bằng Python với?",
+    "expected_behavior": "refuse_politely"
+  },
+  {
+    "id": 17,
+    "category": "out_of_scope",
+    "difficulty": "out_of_scope",
+    "question": "giá khóa học AI20K tiếp theo là bao nhiêu?",
+    "expected_behavior": "escalate_to_ta"
+  },
+  {
+    "id": 18,
+    "category": "out_of_scope",
+    "difficulty": "out_of_scope",
+    "question": "thời tiết hôm nay thế nào?",
+    "expected_behavior": "refuse_politely"
+  },
+  {
+    "id": 19,
+    "category": "out_of_scope",
+    "difficulty": "out_of_scope",
+    "question": "bạn là mô hình GPT-4 hay Claude 3.5?",
+    "expected_behavior": "answer_scope"
+  },
+  {
+    "id": 20,
+    "category": "out_of_scope",
+    "difficulty": "spam",
+    "question": "test test test test test",
+    "expected_behavior": "rate_limit_warning"
+  },
+  {
+    "id": 21,
+    "category": "low_confidence",
+    "difficulty": "domain_specific",
+    "question": "nếu nhóm mình nộp trễ CP4 5 phút thì có bị trừ điểm không?",
+    "expected_behavior": "escalate_to_ta"
+  },
+  {
+    "id": 22,
+    "category": "low_confidence",
+    "difficulty": "domain_specific",
+    "question": "mình muốn đổi sang nhóm khác bây giờ được không?",
+    "expected_behavior": "escalate_to_ta"
+  },
+  {
+    "id": 23,
+    "category": "low_confidence",
+    "difficulty": "sensitive",
+    "question": "điểm thi của nhóm P-012 là bao nhiêu?",
+    "expected_behavior": "refuse_sensitive"
+  },
+  {
+    "id": 24,
+    "category": "low_confidence",
+    "difficulty": "technical",
+    "question": "tài khoản VLearn của mình bị khóa không đăng nhập được?",
+    "expected_behavior": "escalate_to_ta"
+  },
+  {
+    "id": 25,
+    "category": "low_confidence",
+    "difficulty": "unknown",
+    "question": "thầy giáo dạy buổi tiếp theo là ai?",
+    "expected_behavior": "escalate_to_ta"
+  }
+]
