@@ -1,0 +1,71 @@
+{
+  "total_messages": 5898,
+  "human_messages_count": 4265,
+  "bot_messages_count": 1633,
+  "intent_breakdown": {
+    "general": 3625,
+    "logistics_question": 1178,
+    "technical_question": 792,
+    "greeting": 247,
+    "command": 56
+  },
+  "channel_breakdown": {
+    "Bot & Tiện ích / 🤖-gõ-commands": 3195,
+    "💬 CỘNG ĐỒNG / 💬-chung": 2703
+  },
+  "top_active_students": {
+    "nhat_cuong": 213,
+    "nhockiuzzz": 201,
+    "blues1006": 135,
+    "polarpenguin1412": 96,
+    "nayumi.dev": 82,
+    "ngtaiz": 74,
+    "phongqk226": 61,
+    "26ai.huypb": 55,
+    "odinuray": 50,
+    "dakien9187": 40,
+    "megamus_": 40,
+    "tianz1": 37,
+    "lolavine777": 36,
+    "nhmanh.ai42e": 35,
+    "hoangtrunghai9239": 34
+  },
+  "top_questioning_students": {
+    "nhat_cuong": 86,
+    "blues1006": 42,
+    "26ai.huypb": 34,
+    "nhockiuzzz": 26,
+    "odinuray": 21,
+    "ngtaiz": 17,
+    "nayumi.dev": 17,
+    "cptun24": 14,
+    "hoangtrunghai9239": 13,
+    "dakien9187": 12
+  },
+  "verbatim_samples": {
+    "logistics_questions": [
+      "@Trợ lý Kute nhớ mình ko?",
+      "@Trợ lý Kute 2 tháng rồi mới gặp lại, bạn nhớ tôi chứ ?",
+      "`/ticket create`",
+      "bạn nào cần tạo ticket thì gõ lệnh này",
+      "@Vonhatcuong  e đề xuất ghim tn này với sửa tiêu đề kênh thành đọc ghim để biết các lệnh, ổn k a",
+      "tạo ticket không được anh ơi",
+      "Tạo ticket nhé @G10 - T021 - Đại - 01217",
+      "@Lab Coach - HoangHTB anh ơi em có tạo ticket và tag rồi ạ\nanh vào xem giúp em ạ",
+      "Ticket tạo xong BTC sẽ xử lý case by case và theo thứ tự ticket nhé. Đại vui lòng chờ nha",
+      "Mình thấy mi tạo được 2 ticket trước đó mà nhỉ"
+    ],
+    "technical_questions": [
+      "@Trợ lý Kute  bạn là model nào đó",
+      "Command cheatsheet, các command thông dụng\n\n- Tạo ticket `/ticket create`, viết title ngắn gọn, chọn chủ đề thích hợp (khi cần support)\nvd: `/ticket create subject:e bị lỗi tài khoản github sai type:Vấn đề về chương trình build phase description:tài khoản github e bị ban không vào được, nhờ btc đổi github `\n\n- Làm daily `/daily`, ghi việc đã làm xong hôm qua và việc sẽ làm hôm nay (mỗi ngày)\n- Nộp báo cáo tuần cho team `/weekly submit`, nộp báo cáo tuần cho team (2 lần 1 tuần)\n- Xem các đề tài đang có `/exam view`\n- Chọn đề tài `/exam pick`",
+      "`/ticket create subject:e bị lỗi tài khoản github sai type:Vấn đề về chương trình build phase description:tài khoản github e bị ban không vào được, nhờ btc đổi github `",
+      "anh ơi em đang bị lỗi \"Ticket type Vấn đề về nhận role Learner is not configured or disabled. Use a valid type from the autocomplete list\" ạ",
+      "@Trợ lý Kute Github tôi có thêm SSH key của máy rồi, key chưa hết hạn mà sao clone repo private không được",
+      "Có thiết lập key đúng rồi, dùng SSH link rồi nhưng nó vẫn bảo ERROR: Repository not found.\nfatal: Could not read from remote repository.\n\nNghĩa là sao",
+      "@Trợ lý Kute Trong giai đoạn sprint thì mình có thể hạn chế vibe-code được không (nhưng vẫn có AI assistant nên chắc có AI log), với có được phép suggest đề tài giống dự án cá nhân được không",
+      "@Trợ lý Kute  AI log check log như nào và thêm vào github như nào",
+      "@Trợ lý Kute Github BTC thiếu file pyproject.toml tự tạo được không ?",
+      "@Trợ lý Kute Tôi clone github BTC về thấy có sẵn API KEY của AI LOG thì dùng thẳng cái đấy được không"
+    ]
+  }
+}
