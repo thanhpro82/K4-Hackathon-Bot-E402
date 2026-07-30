@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>AI Thực Chiến - Escalation Message</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#dce1ff",
+                      "surface-variant": "#32353c",
+                      "on-primary-container": "#fffdff",
+                      "surface": "#10131a",
+                      "on-primary-fixed": "#000569",
+                      "indigo-glow": "#6366f1",
+                      "danger-alert": "#ED4245",
+                      "discord-blurple": "#5865F2",
+                      "tertiary-container": "#5a71c0",
+                      "on-tertiary": "#092977",
+                      "border-subtle": "rgba(255, 255, 255, 0.1)",
+                      "surface-glass": "rgba(22, 27, 34, 0.75)",
+                      "on-primary": "#000da4",
+                      "secondary-container": "#3131c0",
+                      "primary": "#bec2ff",
+                      "inverse-on-surface": "#2e3037",
+                      "tertiary-fixed-dim": "#b6c4ff",
+                      "on-error": "#690005",
+                      "on-secondary-fixed": "#07006c",
+                      "primary-container": "#5865f2",
+                      "outline-variant": "#454655",
+                      "surface-tint": "#bec2ff",
+                      "on-tertiary-fixed-variant": "#28418e",
+                      "outline": "#8f8fa0",
+                      "surface-bright": "#363940",
+                      "inverse-primary": "#3f4cda",
+                      "surface-container-lowest": "#0b0e14",
+                      "on-surface-variant": "#c6c5d7",
+                      "success-grounded": "#2ECC71",
+                      "on-error-container": "#ffdad6",
+                      "error-container": "#93000a",
+                      "error": "#ffb4ab",
+                      "background": "#10131a",
+                      "surface-container-high": "#272a31",
+                      "inverse-surface": "#e1e2eb",
+                      "tertiary": "#b6c4ff",
+                      "on-secondary-container": "#b0b2ff",
+                      "on-primary-fixed-variant": "#222fc2",
+                      "on-secondary-fixed-variant": "#2f2ebe",
+                      "on-secondary": "#1000a9",
+                      "warning-caution": "#FEE75C",
+                      "on-tertiary-container": "#fffdff",
+                      "secondary-fixed": "#e1e0ff",
+                      "surface-container-low": "#191c22",
+                      "surface-container": "#1d2026",
+                      "on-tertiary-fixed": "#00164f",
+                      "surface-container-highest": "#32353c",
+                      "on-surface": "#e1e2eb",
+                      "secondary": "#c0c1ff",
+                      "on-background": "#e1e2eb",
+                      "surface-dim": "#10131a",
+                      "primary-fixed-dim": "#bec2ff",
+                      "primary-fixed": "#e0e0ff",
+                      "secondary-fixed-dim": "#c0c1ff"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "container-max": "1280px",
+                      "stack-sm": "0.5rem",
+                      "stack-lg": "2rem",
+                      "gutter": "1.5rem",
+                      "stack-md": "1rem",
+                      "margin-mobile": "1rem"
+              },
+              "fontFamily": {
+                      "headline-lg": [
+                              "Inter"
+                      ],
+                      "label-md": [
+                              "JetBrains Mono"
+                      ],
+                      "label-lg": [
+                              "JetBrains Mono"
+                      ],
+                      "body-md": [
+                              "Inter"
+                      ],
+                      "code-block": [
+                              "JetBrains Mono"
+                      ],
+                      "headline-md": [
+                              "Inter"
+                      ],
+                      "headline-sm": [
+                              "Inter"
+                      ],
+                      "body-lg": [
+                              "Inter"
+                      ],
+                      "body-sm": [
+                              "Inter"
+                      ]
+              },
+              "fontSize": {
+                      "headline-lg": [
+                              "32px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "letterSpacing": "-0.02em",
+                                      "fontWeight": "700"
+                              }
+                      ],
+                      "label-md": [
+                              "12px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "label-lg": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.2",
+                                      "fontWeight": "500"
+                              }
+                      ],
+                      "body-md": [
+                              "16px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "code-block": [
+                              "13px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "headline-md": [
+                              "24px",
+                              {
+                                      "lineHeight": "1.3",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "headline-sm": [
+                              "20px",
+                              {
+                                      "lineHeight": "1.4",
+                                      "fontWeight": "600"
+                              }
+                      ],
+                      "body-lg": [
+                              "18px",
+                              {
+                                      "lineHeight": "1.6",
+                                      "fontWeight": "400"
+                              }
+                      ],
+                      "body-sm": [
+                              "14px",
+                              {
+                                      "lineHeight": "1.5",
+                                      "fontWeight": "400"
+                              }
+                      ]
+              }
+      },
+          },
+        }
+    </script>
+<style>
+        body {
+            background-color: #313338; /* Standard Discord Dark Background */
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="text-on-surface font-body-md h-screen flex flex-col items-center justify-center p-4">
+<!-- Mobile-sized container simulating Discord app -->
+<div class="w-full max-w-[400px] flex flex-col gap-4">
+<!-- User Message (Context) -->
+<div class="flex gap-4">
+<div class="flex-shrink-0">
+<div class="w-10 h-10 rounded-full bg-surface-variant overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="A detailed headshot portrait of a student user, vibrant colors, subtle neon rim lighting, modern dark mode aesthetic." src="https://lh3.googleusercontent.com/aida-public/AB6AXuASGNthm-kLk8Keh8Rt2zF5iRz1PTXhalj2g3qLroL0FxC3DavEgpYw5PBFkALsWn69jDBt7XJLevtngwr8mqrvHVq7fRqe7TadnzwZB_E70PSJ3GOvYkhtalCkcNbvF8ME1cXbqGLpViDoIedtE_63umCQKfHr14YNwS1b5q-g3t-jdOL-n1WmttgG3tVNZk6X5AOdedbuU7tQ-sufq_ZueTtd_ulQN8hz85xVnlFUZaCGO7amT41TrQ"/>
+</div>
+</div>
+<div class="flex flex-col flex-grow">
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-on-surface">HọcViên123</span>
+<span class="font-label-md text-label-md text-on-surface-variant">22:45</span>
+</div>
+<div class="font-body-md text-body-md text-on-surface mt-1">
+                    Làm sao để triển khai hệ thống phân quyền phức tạp trong React?
+                </div>
+</div>
+</div>
+<!-- AI Bot Response with Embed -->
+<div class="flex gap-4 mt-2">
+<!-- Bot Avatar -->
+<div class="flex-shrink-0">
+<div class="w-10 h-10 rounded-full bg-discord-blurple flex items-center justify-center text-white relative">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+<!-- Bot Tag indicator -->
+<div class="absolute -bottom-1 -right-1 bg-discord-blurple text-[10px] font-bold px-1 rounded-sm border-[1.5px] border-[#313338] leading-tight">BOT</div>
+</div>
+</div>
+<div class="flex flex-col flex-grow w-full max-w-[calc(100%-3rem)]">
+<!-- Bot Name & Time -->
+<div class="flex items-baseline gap-2">
+<span class="font-headline-sm text-headline-sm text-discord-blurple">AI Thực Chiến Bot</span>
+<span class="font-label-md text-label-md text-on-surface-variant">22:45</span>
+</div>
+<!-- Rich Embed Container -->
+<div class="mt-2 bg-[#2B2D31] rounded-DEFAULT border-l-4 border-warning-caution overflow-hidden flex flex-col w-full shadow-sm">
+<div class="p-4 flex flex-col gap-3">
+<!-- Embed Header -->
+<div class="flex items-center gap-2">
+<span class="text-warning-caution font-headline-sm text-headline-sm">⚠️</span>
+<span class="font-headline-sm text-headline-sm text-on-surface">Trợ Lý AI Học Viên <span class="text-on-surface-variant text-sm">[CẦN HỖ TRỢ NGHỆ THUẬT/TA]</span></span>
+</div>
+<!-- Embed Body -->
+<div class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">
+                            "Mình đã tra cứu trong docs/ nhưng chưa tìm thấy căn cứ chính xác cho câu hỏi của bạn. 📢 Đã thông báo cho đội ngũ hỗ trợ: <span class="bg-[#3b4252] text-primary px-1 rounded-sm cursor-pointer hover:bg-discord-blurple hover:text-white transition-colors">@TA-Team</span> <span class="bg-[#3b4252] text-primary px-1 rounded-sm cursor-pointer hover:bg-discord-blurple hover:text-white transition-colors">@Admin</span>. TA sẽ phản hồi cho bạn ngay khi online!"
+                        </div>
+<!-- Embed Footer -->
+<div class="mt-2 flex items-center gap-2 font-label-md text-label-md text-on-surface-variant/70 border-t border-border-subtle pt-2">
+<span>⏱️ Độ tin cậy: <span class="text-danger-alert font-bold">42%</span> (&lt;75%)</span>
+<span>·</span>
+<span>22:45:12</span>
+</div>
+</div>
+</div>
+<!-- Action Buttons (Component row) -->
+<div class="mt-3 flex flex-wrap gap-2">
+<button class="bg-discord-blurple hover:bg-[#4752C4] text-white font-label-lg text-label-lg px-4 py-2 rounded-DEFAULT flex items-center gap-2 transition-colors duration-200 shadow-sm drop-shadow-[0_0_8px_rgba(88,101,242,0.3)] active:scale-95">
+<span class="material-symbols-outlined text-[18px]">confirmation_number</span>
+                        Tạo Ticket hỗ trợ
+                    </button>
+<button class="bg-[#4E5058] hover:bg-[#6D6F78] text-white font-label-lg text-label-lg px-4 py-2 rounded-DEFAULT flex items-center gap-2 transition-colors duration-200 active:scale-95">
+<span class="material-symbols-outlined text-[18px]">search</span>
+                        Câu hỏi tương tự
+                    </button>
+</div>
+</div>
+</div>
+</div>
+</body></html>
