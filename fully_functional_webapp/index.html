@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html class="dark" lang="vi">
+<head>
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Trợ Lý AI Học Viên - Fully Functional Prototype</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&amp;family=JetBrains+Mono:wght@400;500&amp;display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="app.css">
+    
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "discord-bg": "#313338",
+                        "discord-sidebar": "#2b2d31",
+                        "discord-secondary": "#1e1f22",
+                        "discord-blurple": "#5865F2",
+                        "discord-green": "#2ECC71",
+                        "discord-yellow": "#FEE75C",
+                        "discord-red": "#ED4245",
+                        "discord-text": "#dbdee1",
+                        "discord-muted": "#949ba4",
+                        "dashboard-bg": "#0b0e14",
+                        "dashboard-card": "#191c22"
+                    },
+                    fontFamily: {
+                        "inter": ["Inter", "sans-serif"],
+                        "mono": ["JetBrains Mono", "monospace"]
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="text-discord-text font-inter h-screen flex flex-col antialiased">
+    
+    <!-- App Header / Navigation -->
+    <header class="h-14 bg-discord-sidebar border-b border-discord-secondary flex items-center px-4 justify-between shrink-0 z-20 shadow-md">
+        <div class="flex items-center gap-3">
+            <span class="material-symbols-outlined text-discord-blurple" style="font-variation-settings: 'FILL' 1;">smart_toy</span>
+            <h1 class="font-bold text-lg">Hệ Thống Trợ Lý AI - Prototype</h1>
+        </div>
+        <div class="flex gap-2">
+            <button id="nav-chat" class="px-4 py-1.5 rounded-md text-sm font-semibold bg-discord-blurple text-white transition-colors">Chat Discord</button>
+            <button id="nav-dashboard" class="px-4 py-1.5 rounded-md text-sm font-semibold hover:bg-white/10 text-discord-muted hover:text-white transition-colors">PO Dashboard</button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="flex-1 overflow-hidden relative">
+        
+        <!-- ==================== CHAT VIEW (Discord Clone) ==================== -->
+        <div id="chat-view" class="absolute inset-0 flex bg-discord-bg transition-opacity duration-300">
+            <!-- Sidebar (Channel List) -->
+            <div class="w-60 bg-discord-sidebar hidden md:flex flex-col border-r border-discord-secondary shrink-0">
+                <div class="h-12 border-b border-discord-secondary flex items-center px-4 hover:bg-white/5 cursor-pointer shadow-sm">
+                    <h2 class="font-bold text-white">🚀 AI Thực Chiến</h2>
+                    <span class="material-symbols-outlined ml-auto text-discord-muted text-sm">expand_more</span>
+                </div>
+                <div class="p-3 flex-1 overflow-y-auto">
+                    <div class="text-[12px] font-bold text-discord-muted mb-1 flex items-center gap-1 hover:text-discord-text cursor-pointer">
+                        <span class="material-symbols-outlined text-[14px]">expand_more</span> KÊNH HỖ TRỢ
+                    </div>
+                    <div class="flex items-center gap-1.5 px-2 py-1.5 bg-white/10 text-white rounded cursor-pointer mb-0.5">
+                        <span class="material-symbols-outlined text-discord-muted text-[18px]">tag</span>
+                        <span class="font-medium text-[15px]">hỏi-đáp-trợ-lý</span>
+                    </div>
+                    <div class="flex items-center gap-1.5 px-2 py-1.5 hover:bg-white/5 text-discord-muted hover:text-discord-text rounded cursor-pointer">
+                        <span class="material-symbols-outlined text-[18px]">tag</span>
+                        <span class="font-medium text-[15px]">thảo-luận-chung</span>
+                    </div>
+                </div>
+                <!-- User Controls -->
+                <div class="h-[52px] bg-[#232428] flex items-center px-2 gap-2 shrink-0">
+                    <div class="w-8 h-8 rounded-full overflow-hidden">
+                        <img src="https://ui-avatars.com/api/?name=Học+Viên&background=7289da&color=fff" alt="User">
+                    </div>
+                    <div class="flex-1 min-w-0">
+                        <div class="text-sm font-semibold text-white truncate">Học Viên 101</div>
+                        <div class="text-[11px] text-discord-muted truncate">Online</div>
+                    </div>
+                    <div class="flex gap-1 text-discord-muted">
+                        <span class="material-symbols-outlined text-[18px] p-1.5 hover:bg-white/10 rounded cursor-pointer">mic</span>
+                        <span class="material-symbols-outlined text-[18px] p-1.5 hover:bg-white/10 rounded cursor-pointer">headset</span>
+                        <span class="material-symbols-outlined text-[18px] p-1.5 hover:bg-white/10 rounded cursor-pointer">settings</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chat Area -->
+            <div class="flex-1 flex flex-col h-full min-w-0">
+                <!-- Chat Header -->
+                <div class="h-12 border-b border-discord-secondary flex items-center px-4 shrink-0 justify-between">
+                    <div class="flex items-center gap-2">
+                        <span class="material-symbols-outlined text-discord-muted text-[24px]">tag</span>
+                        <h3 class="font-bold text-white text-[15px]">hỏi-đáp-trợ-lý</h3>
+                    </div>
+                    <div class="flex items-center gap-4 text-discord-muted">
+                        <span class="material-symbols-outlined cursor-pointer hover:text-white">push_pin</span>
+                        <span class="material-symbols-outlined cursor-pointer hover:text-white">group</span>
+                        <div class="relative hidden sm:block">
+                            <input type="text" placeholder="Tìm kiếm" class="bg-[#1e1f22] border-none rounded text-xs px-2 h-6 w-36 focus:ring-0 text-discord-text placeholder-discord-muted">
+                            <span class="material-symbols-outlined absolute right-1 top-1 text-[16px]">search</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Messages Container -->
+                <div id="messages-container" class="flex-1 overflow-y-auto px-4 sm:px-6 py-4 flex flex-col gap-5">
+                    <!-- Messages will be injected here by JS -->
+                </div>
+
+                <!-- Chat Input -->
+                <div class="px-4 sm:px-6 pb-6 shrink-0 mt-2">
+                    <div class="bg-[#383a40] rounded-lg flex items-center px-4 py-2.5 gap-3">
+                        <button class="bg-[#4e5058] hover:bg-[#5d5f66] text-discord-text rounded-full w-6 h-6 flex items-center justify-center shrink-0 transition-colors">
+                            <span class="material-symbols-outlined text-[20px]">add</span>
+                        </button>
+                        <input id="chat-input" class="bg-transparent border-none focus:ring-0 text-white text-[15px] flex-1 placeholder:text-[#81848d] p-0 outline-none w-full" placeholder="Nhắn tin vào #hỏi-đáp-trợ-lý (Thử: 'deadline sprint 1 là khi nào?')" type="text" autocomplete="off"/>
+                        <span class="material-symbols-outlined text-[#b5bac1] hover:text-[#dbdee1] text-[24px] cursor-pointer">featured_seasonal_and_gifts</span>
+                        <span class="material-symbols-outlined text-[#b5bac1] hover:text-[#dbdee1] text-[24px] cursor-pointer">gif_box</span>
+                        <span class="material-symbols-outlined text-[#b5bac1] hover:text-[#dbdee1] text-[24px] cursor-pointer">sentiment_satisfied</span>
+                    </div>
+                    <div class="text-[11px] text-discord-muted mt-2 text-center">
+                        <strong>Lưu ý:</strong> Hãy tag <span class="text-discord-blurple cursor-pointer hover:underline">@Trợ-lý-AI</span> để gọi bot. Các câu hỏi mẫu: "deadline", "cách làm bài", "thầy giáo là ai". Gõ quá nhanh sẽ bị Rate Limit.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== PO DASHBOARD VIEW ==================== -->
+        <div id="dashboard-view" class="absolute inset-0 bg-dashboard-bg text-white overflow-y-auto hidden opacity-0 transition-opacity duration-300 p-6 md:p-10">
+            <div class="max-w-6xl mx-auto">
+                <div class="flex justify-between items-end mb-8">
+                    <div>
+                        <h1 class="text-3xl font-bold mb-2">PO & TA Dashboard</h1>
+                        <p class="text-discord-muted">Theo dõi hiệu suất và chất lượng của Trợ Lý AI Thực Chiến</p>
+                    </div>
+                    <button id="refresh-stats" class="flex items-center gap-2 bg-[#2b2d31] hover:bg-[#383a40] px-3 py-1.5 rounded transition-colors">
+                        <span class="material-symbols-outlined text-[18px]">refresh</span> Làm mới
+                    </button>
+                </div>
+
+                <!-- Top Stats Cards -->
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                    <div class="bg-dashboard-card rounded-xl p-5 border border-white/5 stat-card">
+                        <div class="text-discord-muted text-sm font-semibold mb-1">Tổng Số Lượt Hỏi Đáp</div>
+                        <div class="text-3xl font-bold flex items-end gap-2">
+                            <span id="stat-total-queries">0</span>
+                        </div>
+                    </div>
+                    <div class="bg-dashboard-card rounded-xl p-5 border border-white/5 stat-card">
+                        <div class="text-discord-muted text-sm font-semibold mb-1 flex items-center gap-1">
+                            Tỉ lệ Grounded (Có Trích Dẫn) <span class="material-symbols-outlined text-[14px] text-discord-green">verified</span>
+                        </div>
+                        <div class="text-3xl font-bold text-discord-green flex items-end gap-2">
+                            <span id="stat-grounded-rate">100%</span>
+                        </div>
+                    </div>
+                    <div class="bg-dashboard-card rounded-xl p-5 border border-white/5 stat-card">
+                        <div class="text-discord-muted text-sm font-semibold mb-1 flex items-center gap-1">
+                            Tỉ lệ Escalation (Cần TA) <span class="material-symbols-outlined text-[14px] text-discord-yellow">warning</span>
+                        </div>
+                        <div class="text-3xl font-bold text-discord-yellow flex items-end gap-2">
+                            <span id="stat-escalation-rate">0%</span>
+                        </div>
+                    </div>
+                    <div class="bg-dashboard-card rounded-xl p-5 border border-white/5 stat-card">
+                        <div class="text-discord-muted text-sm font-semibold mb-1 flex items-center gap-1">
+                            Đánh giá Tích cực (FCR) <span class="material-symbols-outlined text-[14px] text-discord-blurple">thumb_up</span>
+                        </div>
+                        <div class="text-3xl font-bold text-discord-blurple flex items-end gap-2">
+                            <span id="stat-positive-rate">0%</span>
+                            <span class="text-sm font-normal text-discord-muted mb-1 ml-1" id="stat-total-feedback">(0 đánh giá)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Recent Escalations & Feedback -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                    <div class="bg-dashboard-card rounded-xl border border-white/5 flex flex-col h-96">
+                        <div class="p-5 border-b border-white/10 flex justify-between items-center shrink-0">
+                            <h3 class="font-bold flex items-center gap-2"><span class="material-symbols-outlined text-discord-yellow">warning</span> Tickets Cần TA Hỗ Trợ</h3>
+                            <span class="bg-discord-red/20 text-discord-red px-2 py-0.5 rounded text-xs font-bold" id="ticket-badge">0 Pending</span>
+                        </div>
+                        <div class="p-4 flex-1 overflow-y-auto" id="dashboard-tickets">
+                            <!-- Empty State -->
+                            <div class="h-full flex flex-col items-center justify-center text-discord-muted opacity-60">
+                                <span class="material-symbols-outlined text-4xl mb-2">assignment_turned_in</span>
+                                <p>Tuyệt vời! Không có câu hỏi nào bị tồn đọng.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-dashboard-card rounded-xl border border-white/5 flex flex-col h-96">
+                        <div class="p-5 border-b border-white/10 flex justify-between items-center shrink-0">
+                            <h3 class="font-bold flex items-center gap-2"><span class="material-symbols-outlined text-discord-red">thumb_down</span> Feedback Tiêu Cực (Needs RAG Tune)</h3>
+                        </div>
+                        <div class="p-4 flex-1 overflow-y-auto" id="dashboard-negative-feedbacks">
+                            <!-- Empty State -->
+                            <div class="h-full flex flex-col items-center justify-center text-discord-muted opacity-60">
+                                <span class="material-symbols-outlined text-4xl mb-2">mood</span>
+                                <p>Chưa có feedback tiêu cực nào từ học viên.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==================== FEEDBACK MODAL ==================== -->
+        <div id="feedback-modal" class="fixed inset-0 modal-overlay hidden flex items-center justify-center z-50">
+            <div class="bg-discord-bg w-full max-w-md rounded-lg shadow-2xl border border-white/10 flex flex-col overflow-hidden fade-in mx-4">
+                <div class="p-4 border-b border-discord-secondary flex justify-between items-center">
+                    <h2 class="font-bold text-white text-lg flex items-center gap-2">
+                        <span class="material-symbols-outlined text-discord-red">feedback</span> 
+                        Phản hồi chưa chính xác
+                    </h2>
+                    <span id="close-modal" class="material-symbols-outlined text-discord-muted cursor-pointer hover:text-white">close</span>
+                </div>
+                <div class="p-5">
+                    <p class="text-discord-text text-sm mb-4">Bạn vui lòng cho biết AI trả lời chưa tốt ở điểm nào để team cải thiện nhé:</p>
+                    <div class="space-y-2 mb-5">
+                        <label class="flex items-center gap-2 cursor-pointer p-2 hover:bg-white/5 rounded">
+                            <input type="radio" name="feedback_reason" value="Câu trả lời sai hoàn toàn" class="accent-discord-blurple w-4 h-4" checked>
+                            <span class="text-sm">Câu trả lời sai hoàn toàn</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer p-2 hover:bg-white/5 rounded">
+                            <input type="radio" name="feedback_reason" value="Trích dẫn tài liệu không liên quan" class="accent-discord-blurple w-4 h-4">
+                            <span class="text-sm">Trích dẫn tài liệu không liên quan</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer p-2 hover:bg-white/5 rounded">
+                            <input type="radio" name="feedback_reason" value="Thiếu thông tin quan trọng" class="accent-discord-blurple w-4 h-4">
+                            <span class="text-sm">Thiếu thông tin quan trọng</span>
+                        </label>
+                        <label class="flex items-center gap-2 cursor-pointer p-2 hover:bg-white/5 rounded">
+                            <input type="radio" name="feedback_reason" value="Khác" class="accent-discord-blurple w-4 h-4" id="reason-other-radio">
+                            <span class="text-sm">Khác</span>
+                        </label>
+                    </div>
+                    <textarea id="feedback-detail" placeholder="Cung cấp thêm chi tiết (Không bắt buộc)..." class="w-full bg-[#1e1f22] border border-white/10 rounded-md p-3 text-sm text-white focus:outline-none focus:border-discord-blurple h-20 resize-none"></textarea>
+                </div>
+                <div class="p-4 bg-[#2b2d31] flex justify-end gap-3">
+                    <button id="cancel-feedback" class="px-4 py-2 rounded font-medium text-white hover:underline text-sm transition-colors">Hủy</button>
+                    <button id="submit-feedback" class="px-6 py-2 rounded font-medium bg-discord-blurple hover:bg-[#4752C4] text-white text-sm transition-colors shadow-md">Gửi Phản Hồi</button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
