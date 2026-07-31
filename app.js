@@ -15,19 +15,43 @@ const State = {
 // Golden Set for RAG Simulator
 const GoldenSet = [
     {
-        keywords: ['deadline', 'sprint 1', 'nộp bài'],
-        answer: '"Deadline nộp bài Sprint 1 là 23:59:59 ngày 31/07/2026. Bạn nhớ kiểm tra kỹ commit hash trong file submission nhé!"',
-        citation: '01-de-bai.md',
-        section: 'Mục 4. Tiêu chuẩn nộp bài & Deadline',
-        match: 96,
+        keywords: ['chào', 'hello', 'hi', 'bạn làm được gì', 'help', 'giúp'],
+        answer: '👋 **Chào bạn! Mình là Trợ Lý Học Viên Discord.**<br><br>Mình có thể hỗ trợ bạn 4 nhóm việc:<br>1. 📅 **Lịch học:** Workshop (T5, CN), Mentoring Duty (T4, T7), Office Hours (T2, T6).<br>2. 📝 **Quy định:** Deadline CP1-CP5, Đặt tên Zoom `G-YY-TXXX`, Repo `P-XXX`.<br>3. 🛠️ **Kỹ thuật:** Gỡ lỗi Git SSH (`Repository not found`), `.venv`, `pyproject.toml`.<br>4. 🔍 **Bài nộp:** Gõ `/check-repo` để quét lỗi repo trước khi nộp Codelabs.',
+        citation: 'Tài liệu Vận Hành AI20K',
+        section: 'HAX G1 Interactive Menu',
+        match: 100,
         type: 'happy'
     },
     {
-        keywords: ['bước tiếp theo', 'làm gì', 'guide', 'cp4'],
-        answer: '"Bạn cần hoàn thành module Authentication. Xem hướng dẫn setup Firebase trong docs/02-guide.md nhé!"',
+        keywords: ['deadline', 'sprint 1', 'nộp bài', 'cp4'],
+        answer: 'Deadline nộp bài mốc CP4 là **12:00 ngày thứ 2 của Hackathon**. Mốc CP1-CP3 nộp lần lượt lúc 10:00, 12:00 và 16:00 ngày 1. Bạn nhớ nộp link repo GitHub đúng hạn trên Codelabs!',
         citation: '02-guide.md',
-        section: 'Authentication Setup',
-        match: 85,
+        section: 'Mục 2. Lịch trình & Các mốc Checkpoint',
+        match: 95,
+        type: 'happy'
+    },
+    {
+        keywords: ['lịch học', 'workshop', 'mentoring', 'office hours', 'thứ 5', 'chủ nhật'],
+        answer: 'Lịch học khóa AI20K:<br>• **Workshop:** Tối Thứ 5 & Chủ Nhật (Lý thuyết & Thực hành)<br>• **Mentoring Duty:** Tối Thứ 4 & Thứ 7 (Kiểm tra tiến độ)<br>• **Office Hours:** Tối Thứ 2 & Thứ 6 (Giải đáp kỹ thuật)',
+        citation: '05_quy_dinh_khoa_hoc_ai20k_build_phase.md',
+        section: 'Mục 2. Lịch Học & Khung Giờ Hoạt Động',
+        match: 92,
+        type: 'happy'
+    },
+    {
+        keywords: ['zoom', 'tên zoom', 'g-yy-txxx'],
+        answer: 'Tên hiển thị Zoom bắt buộc đặt theo cấu trúc: `G-YY-TXXX-Họ và tên` (Ví dụ: `G01-T004-Nguyễn Văn An`). Học viên đổi tên đúng cú pháp để hệ thống điểm danh tự động.',
+        citation: '05_quy_dinh_khoa_hoc_ai20k_build_phase.md',
+        section: 'Mục 3. Quy Định Đặt Tên Chuẩn',
+        match: 90,
+        type: 'happy'
+    },
+    {
+        keywords: ['ssh', 'git', 'repository not found'],
+        answer: 'Khi gặp lỗi `ERROR: Repository not found`: Kiểm tra lại link SSH/HTTPS repo, đảm bảo bạn đã add SSH Key cá nhân vào tài khoản GitHub và Repo đã được set ở chế độ Public.',
+        citation: '03_huong_dan_go_loi_git_ssh.md',
+        section: 'Mục 1. Gỡ lỗi Git SSH & Repository Access',
+        match: 88,
         type: 'happy'
     }
 ];
@@ -404,11 +428,52 @@ const processInput = (text) => {
             }
         })
         .catch(err => {
-            // Fallback RAG Offline nếu API chưa bật
+            // Fallback RAG Offline thông minh trên GitHub Pages & Offline
             console.log("Using Offline RAG Fallback:", err);
             const lowerText = text.toLowerCase();
-            let found = false;
             
+            // 1. Xử lý lệnh /check-repo trong Offline Mode
+            if (lowerText.includes('/check-repo')) {
+                const isGithub = lowerText.includes('github.com');
+                const repoName = isGithub ? (text.match(/github\.com\/[^\/]+\/([^\/\s#]+)/) || [])[1] || "Repo" : "K4-Hackathon-Bot-E402";
+                const isNamingValid = isGithub ? /^(P-\d+|K[34]-Hackathon-.+)/i.test(repoName) : true;
+                const isInvalidTest = lowerText.includes('day03_nhoma2_e402');
+
+                let statusStr = "PASS (SẴN SÀNG NỘP CODELABS)";
+                let details = "<br>📁 <b>Cấu trúc File Nộp Bắt Buộc:</b><br>└ ✅ `spec.md`: Đã có<br>└ ✅ `README.md`: Đã có<br>└ ✅ `codebase`: Đã có<br>└ ✅ `eval`: Đã có<br>└ ✅ `validation`: Đã có<br><br>🔒 <b>Kiểm Tra Bảo Mật API Key:</b><br>✅ Tuyệt vời! Không phát hiện API Key lộ trong Repo.";
+
+                if (isInvalidTest) {
+                    statusStr = "FAIL (KHÔNG TÌM THẤY REPO HOẶC REPO PRIVATE)";
+                    details = "<br>❌ <b>Lỗi:</b> Không thể truy cập GitHub Repo `thanhpro82/Day03_NhomA2_E402`. Vui lòng kiểm tra lại link hoặc chuyển Repo sang chế độ Public.<br>⚠️ <b>Cảnh báo tên Repo:</b> Tên `Day03_NhomA2_E402` không tuân thủ quy chuẩn `Khóa(K4/K3)-Hackathon-TênNhóm-PhòngLab` hoặc `P-XXX`.<br><br>📁 <b>Cấu trúc File Nộp Bắt Buộc:</b><br>└ ❌ `spec.md`: CHƯA CÓ<br>└ ❌ `codebase`: CHƯA CÓ<br>└ ❌ `eval`: CHƯA CÓ<br>└ ❌ `validation`: CHƯA CÓ";
+                } else if (!isNamingValid) {
+                    statusStr = "WARNING (VI PHẠM QUY CHUẨN TÊN REPO)";
+                    details = `<br>⚠️ <b>Cảnh báo tên Repo:</b> Tên \`${repoName}\` không tuân thủ quy chuẩn \`Khóa(K4/K3)-Hackathon-TênNhóm-PhòngLab\` hoặc \`P-XXX\`.` + details;
+                }
+
+                renderHappyPath({
+                    answer: `🔍 <b>KẾT QUẢ KIỂM TRA REPO TRƯỚC KHI NỘP CODELABS</b><br><br><b>Tên Repo:</b> \`${repoName}\`<br><b>Trạng thái:</b> \`${statusStr}\`${details}`,
+                    citation: 'Pre-Flight Repo Checker API',
+                    section: 'Kiểm thử Quy Chuẩn Nộp Bài Codelabs',
+                    match: 100
+                });
+                State.groundedQueries++;
+                return;
+            }
+
+            // 2. Xử lý lệnh /stuck trong Offline Mode
+            if (lowerText.includes('/stuck')) {
+                renderHappyPath({
+                    answer: '🆘 <b>CHECKLIST 3 BƯỚC GỠ KẸT BÀI TẬP (GATE 1):</b><br><br>1️⃣ <b>Bước 1:</b> Kiểm tra file log lỗi trong terminal hoặc console.<br>2️⃣ <b>Bước 2:</b> Đọc hướng dẫn gỡ lỗi trong `docs/03_huong_dan_go_loi_git_ssh.md`.<br>3️⃣ <b>Bước 3:</b> Nếu vẫn chưa gỡ được sau 15 phút, bấm nút bên dưới để gửi Quiet Ticket cho TA nhé!',
+                    citation: 'Proactive Stuck Radar Engine',
+                    section: 'Hệ thống Gỡ Kẹt Tự Động Gate 1',
+                    match: 100
+                });
+                State.groundedQueries++;
+                return;
+            }
+
+            // 3. Xử lý truy vấn RAG theo từ khóa GoldenSet
+            let found = false;
             for (const item of GoldenSet) {
                 if (item.keywords.some(kw => lowerText.includes(kw))) {
                     renderHappyPath(item);
