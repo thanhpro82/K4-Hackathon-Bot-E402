@@ -1,4 +1,4 @@
-name: Deploy Static Web App to GitHub Pages CI/CD
+name: Automated Test & CI/CD Deployment Pipeline
 
 on:
   push:
@@ -15,7 +15,31 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  # JOB 1: MANDATORY AUTOMATED TESTING (Chỉ khi PASS 100% mới chuyển sang Deploy)
+  test:
+    name: Run Automated Eval & Codebase Unit Tests
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Run RAG Engine Eval Golden Set (25 Test Cases)
+        run: |
+          python eval/run_eval.py
+
+      - name: Run Discord Bot Simulator CLI Test
+        run: |
+          python codebase/app_bot.py
+
+  # JOB 2: DEPLOY TO GITHUB PAGES (Phụ thuộc vào JOB 1 Test Pass)
   deploy:
+    name: Deploy to GitHub Pages
+    needs: test
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
