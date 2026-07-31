@@ -84,7 +84,11 @@ class RAGEngine:
                 "xp": ["xp", "gate 1", "+100"],
                 "slide": ["slide", "vlearn.dev"],
                 "codelabs": ["codelabs.vlearn.dev", "codelabs"],
-                "vlearn": ["vlearn.dev", "vlearn"]
+                "vlearn": ["vlearn.dev", "vlearn"],
+                "daily": ["daily", "/daily", "log hàng ngày"],
+                "weekly": ["weekly", "/weekly submit", "báo cáo tuần"],
+                "exam": ["exam", "/exam pick", "chọn đề tài"],
+                "hook": ["github hook", "webhook", "ai log"]
             }
             
             for kw, targets in keywords_bonus.items():
