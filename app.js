@@ -53,6 +53,38 @@ const GoldenSet = [
         section: 'Mục 1. Gỡ lỗi Git SSH & Repository Access',
         match: 88,
         type: 'happy'
+    },
+    {
+        keywords: ['daily', '/daily', 'log hàng ngày', 'xp'],
+        answer: 'Lệnh `/daily` giúp ghi nhận tiến độ hàng ngày và nhận **+5 XP**. Bạn nộp trước **23:59 hàng ngày** bằng cách gõ `/daily` và điền 2 mục: Yesterday (việc đã làm) & Today (việc sẽ làm).',
+        citation: '07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md',
+        section: 'Mục 2. Lệnh /daily Stand-up Log',
+        match: 98,
+        type: 'happy'
+    },
+    {
+        keywords: ['exam', '/exam pick', 'chọn đề tài'],
+        answer: 'Lệnh `/exam pick` dùng để chọn đề tài Build Phase. **Lưu ý quan trọng:** Chỉ 01 đại diện team bấm chọn và chỉ được chọn **01 lần duy nhất**, không thể thay đổi sau khi đã chọn.',
+        citation: '07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md',
+        section: 'Mục 2. Lệnh /exam pick Chọn Đề Tài',
+        match: 96,
+        type: 'happy'
+    },
+    {
+        keywords: ['ai log', 'phoenix note', 'api key', 'hook'],
+        answer: 'Hướng dẫn Setup AI Log:<br>1. Tạo API Key tại `https://phoenix.note.transformerlabs.ai/api-keys`<br>2. Clone Repo team trong Org GitHub `AI20K-Build-Phase-Cohort-3`<br>3. Kiểm tra dòng `[ai-log] Submitted` mỗi khi push code hoặc xem cột Last Used trên Phoenix Note.',
+        citation: '07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md',
+        section: 'Mục 1. Hướng Dẫn Setup AI Log Phoenix Note',
+        match: 95,
+        type: 'happy'
+    },
+    {
+        keywords: ['lần nộp', 'tối đa', 'giới hạn', 'nộp trễ', 'codelabs'],
+        answer: 'Hệ thống Codelabs **không giới hạn số lần nộp bài**. Bạn có thể nộp lại nhiều lần để tối ưu hóa code cho đến khi hết hạn deadline của bài tập.',
+        citation: '07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md',
+        section: 'Mục 3. Quy Định Nộp Bài Codelabs',
+        match: 94,
+        type: 'happy'
     }
 ];
 
