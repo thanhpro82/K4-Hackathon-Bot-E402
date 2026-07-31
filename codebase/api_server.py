@@ -109,18 +109,6 @@ class RequestHandler(BaseHTTPRequestHandler):
                 self.wfile.write(json.dumps(response_payload, ensure_ascii=False).encode('utf-8'))
                 return
 
-            # 2. Lệnh /daily (Chính xác 100%)
-            if "/daily" in query_lower or query_lower == "daily":
-                response_payload = {
-                    "status": "HIGH_CONFIDENCE",
-                    "confidence_score": 1.0,
-                    "answer": "📝 **HƯỚNG DẪN THỰC HIỆN LỆNH /DAILY (STAND-UP LOG):**\n\n• **Cách dùng:** Gõ `/daily` vào khung chat. Điền 2 mục: *Yesterday* (việc đã hoàn thành hôm qua) & *Today* (mục tiêu làm hôm nay).\n• **Quyền lợi:** Nhận ngay **+5 XP** cho mỗi lần nộp daily thành công.\n• **Thời hạn:** Nộp trước **23:59 hàng ngày** để ghi nhận tiến độ.",
-                    "citation": "`[07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md # Mục 2]`"
-                }
-                dashboard_stats["high_confidence_queries"] += 1
-                self._set_headers(200)
-                self.wfile.write(json.dumps(response_payload, ensure_ascii=False).encode('utf-8'))
-                return
 
             # 3. Lệnh /check-repo
             if "/check-repo" in query_lower:

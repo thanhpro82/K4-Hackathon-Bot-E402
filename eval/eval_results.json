@@ -12,7 +12,7 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.83,
+      "confidence_score": 1.0,
       "citation": "`[01_quy_dinh_hackathon_va_lich_trinh.md # 2. Quy Định Nộp Bài & Cấu Trúc Repo Bắt Buộc]`",
       "passed": true
     },
@@ -22,8 +22,8 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.9,
-      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 2. Nhịp Vận Hành Hàng Tuần (Weekly Schedule)]`",
+      "confidence_score": 0.71,
+      "citation": "`[07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md # 📅 Lịch Học & Khung Giờ]`",
       "passed": true
     },
     {
@@ -32,7 +32,7 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.9,
+      "confidence_score": 0.86,
       "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 2. Nhịp Vận Hành Hàng Tuần (Weekly Schedule)]`",
       "passed": true
     },
@@ -42,7 +42,7 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.9,
+      "confidence_score": 0.89,
       "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 1. Danh Sách Lệnh Discord Thường Dùng (Command Cheatsheet)]`",
       "passed": true
     },
@@ -52,7 +52,7 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.97,
+      "confidence_score": 0.9,
       "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 4. Hệ Thống Nền Tảng Học Tập & Nộp Bài]`",
       "passed": true
     },
@@ -62,7 +62,7 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 1.0,
+      "confidence_score": 0.9,
       "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 4. Hệ Thống Nền Tảng Học Tập & Nộp Bài]`",
       "passed": true
     },
@@ -72,7 +72,7 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.9,
+      "confidence_score": 0.86,
       "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 3. Quy Định Đặt Tên Chuẩn (Naming Conventions)]`",
       "passed": true
     },
@@ -82,7 +82,7 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.9,
+      "confidence_score": 0.86,
       "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 3. Quy Định Đặt Tên Chuẩn (Naming Conventions)]`",
       "passed": true
     },
@@ -92,8 +92,8 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.82,
-      "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 1. Danh Sách Lệnh Discord Thường Dùng (Command Cheatsheet)]`",
+      "confidence_score": 1.0,
+      "citation": "`[03_huong_dan_go_loi_git_ssh.md # 1. Lỗi \"ERROR: Repository not found / Could not read from remote repository\"]`",
       "passed": true
     },
     {
@@ -102,7 +102,7 @@
       "category": "happy_path",
       "expected_behavior": "answer_with_citation",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.98,
+      "confidence_score": 1.0,
       "citation": "`[04_huong_dan_moi_truong_python_va_ai_log.md # Câu hỏi: \"Repo của nhóm không có file pyproject.toml thì sao?\"]`",
       "passed": true
     },
@@ -111,20 +111,20 @@
       "question": "nộp bài ở đâu?",
       "category": "ambiguous",
       "expected_behavior": "ask_clarification",
-      "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.5,
-      "citation": "Tag: `@TA-Support` `@Mod`",
-      "passed": true
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 1.0,
+      "citation": "`[01_quy_dinh_hackathon_va_lich_trinh.md # 2. Quy Định Nộp Bài & Cấu Trúc Repo Bắt Buộc]`",
+      "passed": false
     },
     {
       "id": 12,
       "question": "deadline khi nào?",
       "category": "ambiguous",
       "expected_behavior": "ask_clarification",
-      "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.67,
-      "citation": "`[07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md # 🏁 Gate 1 — Chốt Đề Tài & Thiết Kế]`",
-      "passed": false
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.4,
+      "citation": "Gợi ý: Nhập câu hỏi rõ ràng hơn hoặc tag `@TA-Support`",
+      "passed": true
     },
     {
       "id": 13,
@@ -132,8 +132,8 @@
       "category": "ambiguous",
       "expected_behavior": "ask_clarification",
       "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.8,
-      "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 1. Danh Sách Lệnh Discord Thường Dùng (Command Cheatsheet)]`",
+      "confidence_score": 1.0,
+      "citation": "`[03_huong_dan_go_loi_git_ssh.md # 🛠️ HƯỚNG DẪN FIX LỖI KỸ THUẬT GIT & SSH KEY]`",
       "passed": false
     },
     {
@@ -143,7 +143,7 @@
       "expected_behavior": "ask_clarification",
       "actual_status": "HIGH_CONFIDENCE",
       "confidence_score": 1.0,
-      "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 1. Danh Sách Lệnh Discord Thường Dùng (Command Cheatsheet)]`",
+      "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 🤖 HƯỚNG DẪN CÚ PHÁP LỆNH DISCORD & QUY TRÌNH TẠO TICKET]`",
       "passed": false
     },
     {
@@ -151,10 +151,10 @@
       "question": "bài tập tuần này làm gì?",
       "category": "ambiguous",
       "expected_behavior": "ask_clarification",
-      "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.5,
-      "citation": "Tag: `@TA-Support` `@Mod`",
-      "passed": true
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 1.0,
+      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 4. Hệ Thống Nền Tảng Học Tập & Nộp Bài]`",
+      "passed": false
     },
     {
       "id": 16,
@@ -162,7 +162,7 @@
       "category": "out_of_scope",
       "expected_behavior": "refuse_politely",
       "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.33,
+      "confidence_score": 0.29,
       "citation": "Tag: `@TA-Support` `@Mod`",
       "passed": true
     },
@@ -172,7 +172,7 @@
       "category": "out_of_scope",
       "expected_behavior": "escalate_to_ta",
       "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.44,
+      "confidence_score": 0.3,
       "citation": "Tag: `@TA-Support` `@Mod`",
       "passed": true
     },
@@ -182,7 +182,7 @@
       "category": "out_of_scope",
       "expected_behavior": "refuse_politely",
       "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.5,
+      "confidence_score": 0.3,
       "citation": "Tag: `@TA-Support` `@Mod`",
       "passed": true
     },
@@ -192,7 +192,7 @@
       "category": "out_of_scope",
       "expected_behavior": "answer_scope",
       "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.1,
+      "confidence_score": 0.6,
       "citation": "Tag: `@TA-Support` `@Mod`",
       "passed": true
     },
@@ -212,7 +212,7 @@
       "category": "low_confidence",
       "expected_behavior": "escalate_to_ta",
       "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.61,
+      "confidence_score": 0.44,
       "citation": "Tag: `@TA-Support` `@Mod`",
       "passed": true
     },
@@ -222,7 +222,7 @@
       "category": "low_confidence",
       "expected_behavior": "escalate_to_ta",
       "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.3,
+      "confidence_score": 0.36,
       "citation": "Tag: `@TA-Support` `@Mod`",
       "passed": true
     },
@@ -232,7 +232,7 @@
       "category": "low_confidence",
       "expected_behavior": "refuse_sensitive",
       "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.44,
+      "confidence_score": 0.57,
       "citation": "Tag: `@TA-Support` `@Mod`",
       "passed": true
     },
@@ -241,10 +241,10 @@
       "question": "tài khoản VLearn của mình bị khóa không đăng nhập được?",
       "category": "low_confidence",
       "expected_behavior": "escalate_to_ta",
-      "actual_status": "HIGH_CONFIDENCE",
-      "confidence_score": 0.76,
-      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # Quy định nộp bài trên Codelabs (`codelabs.vlearn.dev`):]`",
-      "passed": false
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.57,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
     },
     {
       "id": 25,
@@ -252,7 +252,7 @@
       "category": "low_confidence",
       "expected_behavior": "escalate_to_ta",
       "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.38,
+      "confidence_score": 0.3,
       "citation": "Tag: `@TA-Support` `@Mod`",
       "passed": true
     }

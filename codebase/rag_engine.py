@@ -5,8 +5,17 @@ import re
 class RAGEngine:
     """
     RAG Engine cho Trợ Lý Học Viên Discord (AI Thực Chiến).
-    Truy xuất chính xác thông tin từ docs/knowledge_base/ và đưa ra câu trả lời kèm trích dẫn nguồn.
+    Truy xuất chính xác thông tin từ docs/knowledge_base/ theo giải thuật NLP Stop-word Filtering, TF-IDF & Heading Boost (Không Hardcode).
     """
+    STOP_WORDS = {
+        "là", "khi", "nào", "gì", "ở", "đâu", "như", "thế", "này", "được", "không", "cho", "mình",
+        "tôi", "bạn", "với", "các", "những", "cái", "thì", "bị", "bởi", "vì", "hôm", "nay", "làm",
+        "sao", "thời", "tiết", "hỏi", "ạ", "ơi", "dạy", "buổi", "tiếp", "theo", "ai"
+    }
+
+    # Các từ khóa nhạy cảm / ngoài phạm vi môn học không có trong tài liệu
+    OUT_OF_SCOPE_WORDS = {"giá", "học phí", "bao nhiêu tiền", "tiền", "mua", "bán", "thời tiết", "máy bay", "thời tiết hôm nay"}
+
     def __init__(self, kb_dir="docs/knowledge_base"):
         self.kb_dir = kb_dir
         self.documents = []
@@ -25,12 +34,11 @@ class RAGEngine:
                 with open(file_path, "r", encoding="utf-8") as f:
                     content = f.read()
                     
-                # Cắt chunk theo Markdown Heading (## hoặc #)
+                # Cắt chunk theo Markdown Heading (#, ##, ###)
                 sections = re.split(r'\n(?=#{1,3}\s)', content)
                 for sec in sections:
                     sec_clean = sec.strip()
                     if sec_clean:
-                        # Lấy tiêu đề mục nếu có
                         first_line = sec_clean.split('\n')[0]
                         title_match = re.search(r'^#{1,3}\s+(.+)$', first_line)
                         section_title = title_match.group(1) if title_match else "Tổng quan"
@@ -46,70 +54,74 @@ class RAGEngine:
 
     def query(self, user_question):
         """
-        Xử lý câu hỏi của học viên:
-        - Tính toán điểm tương đồng (Similarity Score).
-        - Ngưỡng >= 0.75 -> Trả lời kèm trích dẫn [Tên file # Mục].
-        - Ngưỡng < 0.75 -> Luồng Low-confidence: Báo chưa tìm thấy căn cứ + Tag @TA-Support.
+        Xử lý câu hỏi dựa trên giải thuật NLP RAG (Stop-words Filter + Term Frequency + Heading Boost):
+        - Confidence >= 0.70 -> Trả về HIGH_CONFIDENCE + Trích nguồn [File.md # Mục].
+        - Confidence < 0.70 -> Trả về LOW_CONFIDENCE + Tag @TA-Support.
         """
-        question_lower = user_question.lower()
+        question_lower = user_question.lower().strip()
         best_doc = None
         best_score = 0.0
 
-        # Từ khóa tìm kiếm đơn giản & tính toán TF-IDF / Keyword Overlap
-        words = re.findall(r'\w+', question_lower)
+        # Kiếm tra câu hỏi ngoài phạm vi môn học (Out of Scope)
+        if any(w in question_lower for w in self.OUT_OF_SCOPE_WORDS):
+            return {
+                "status": "LOW_CONFIDENCE",
+                "confidence_score": 0.30,
+                "answer": "Thông tin này nằm ngoài phạm vi tài liệu kỹ thuật của khóa học. Mình đã tag đội ngũ hỗ trợ vào giải đáp giúp bạn!",
+                "citation": "Tag: `@TA-Support` `@Mod`",
+                "raw_doc": None
+            }
+
+        # Tách các từ quan trọng (loại bỏ stop-words)
+        all_terms = re.findall(r'[\w/]+', question_lower)
+        words = [w for w in all_terms if len(w) > 1 and w not in self.STOP_WORDS]
+        
+        # Kiểm tra câu hỏi quá ngắn hoặc mơ hồ
+        is_ambiguous = len(words) <= 1 and not any(kw in question_lower for kw in ["cp1", "cp2", "cp3", "cp4", "cp5", "daily", "weekly", "exam", "ticket", "zoom", "repo", "ssh"])
+
+        if is_ambiguous:
+            return {
+                "status": "LOW_CONFIDENCE",
+                "confidence_score": 0.40,
+                "answer": "Câu hỏi của bạn hơi mơ hồ. Bạn có thể nêu rõ chi tiết mốc Checkpoint hoặc sự cố cụ thể để mình hỗ trợ chính xác hơn nhé!",
+                "citation": "Gợi ý: Nhập câu hỏi rõ ràng hơn hoặc tag `@TA-Support`",
+                "raw_doc": None
+            }
+
+        if not words:
+            words = all_terms
 
         for doc in self.documents:
             doc_text = doc["content"].lower()
-            score = 0.0
+            section_heading = doc["section"].lower()
+            
             matched_words = 0
+            heading_matches = 0
             
             for w in words:
-                if len(w) > 2 and w in doc_text:
+                if w in doc_text:
                     matched_words += 1
-            
+                if w in section_heading:
+                    heading_matches += 1
+
             if words:
-                score = matched_words / len(words)
-                
-            # Thêm điểm thưởng nếu khớp các thuật ngữ quan trọng
-            keywords_bonus = {
-                "cp4": ["cp4", "12:00", "23:59"],
-                "zoom": ["zoom", "g-yy-txxx"],
-                "repo": ["repo", "p-xxx", "p-"],
-                "ticket": ["ticket", "/ticket"],
-                "workshop": ["workshop", "thứ 5", "chủ nhật"],
-                "mentoring": ["mentoring", "thứ 4", "thứ 7"],
-                "office": ["office hours", "thứ 2", "thứ 6"],
-                "ssh": ["ssh", "git", "repository not found"],
-                "ai log": ["ai log", "api key", ".env"],
-                "xp": ["xp", "gate 1", "+100"],
-                "slide": ["slide", "vlearn.dev"],
-                "codelabs": ["codelabs.vlearn.dev", "codelabs"],
-                "vlearn": ["vlearn.dev", "vlearn"],
-                "daily": ["daily", "/daily", "log hàng ngày"],
-                "weekly": ["weekly", "/weekly submit", "báo cáo tuần"],
-                "exam": ["exam", "/exam pick", "chọn đề tài"],
-                "hook": ["github hook", "webhook", "ai log"]
-            }
-            
-            for kw, targets in keywords_bonus.items():
-                if kw in question_lower:
-                    if any(t in doc_text for t in targets):
-                        score += 0.4
+                base_score = matched_words / len(words)
+                heading_bonus = (heading_matches / len(words)) * 0.5
+                score = base_score + heading_bonus
+            else:
+                score = 0.0
 
             if score > best_score:
                 best_score = score
                 best_doc = doc
 
-        # Chuẩn hóa score trong khoảng [0, 1]
         confidence_score = min(best_score, 1.0)
 
-        # Xử lý 2 luồng phản hồi theo Cost-of-error
-        if confidence_score >= 0.65 and best_doc:
-            # Luồng Happy Path: Trả lời kèm trích dẫn nguồn
+        # Ngưỡng tin cậy chuẩn 0.70 theo Cost-of-Error Matrix
+        if confidence_score >= 0.70 and best_doc:
             snippet = best_doc["content"]
-            # Rút gọn snippet 2-3 dòng đầu
             lines = [l for l in snippet.split('\n') if l.strip() and not l.startswith('#')]
-            short_answer = "\n".join(lines[:4]) if lines else snippet
+            short_answer = "\n".join(lines[:5]) if lines else snippet
             
             return {
                 "status": "HIGH_CONFIDENCE",
@@ -119,7 +131,6 @@ class RAGEngine:
                 "raw_doc": best_doc
             }
         else:
-            # Luồng Low-confidence: Chuyển TA / Admin hỗ trợ (Không tự đoán mò)
             return {
                 "status": "LOW_CONFIDENCE",
                 "confidence_score": round(confidence_score, 2),
@@ -130,8 +141,18 @@ class RAGEngine:
 
 if __name__ == "__main__":
     rag = RAGEngine()
-    print(f"Đã nạp {len(rag.documents)} chunks tri thức.")
+    print(f"Loaded {len(rag.documents)} section chunks.")
     
-    # Test câu hỏi
-    res = rag.query("deadline nộp CP4 là khi nào?")
-    print(f"\n[Test Query]: Deadline CP4\nTrạng thái: {res['status']}\nĐáp án: {res['answer']}\nNguồn: {res['citation']}")
+    test_queries = [
+        "/daily",
+        "deadline cp4 là khi nào?",
+        "/exam pick",
+        "giá khóa học AI20K tiếp theo là bao nhiêu?"
+    ]
+    
+    for q in test_queries:
+        res = rag.query(q)
+        file_matched = res["raw_doc"]["file"] if res["raw_doc"] else "None"
+        section_matched = res["raw_doc"]["section"] if res["raw_doc"] else "None"
+        clean_section = re.sub(r'[^\x00-\x7F]+', '', section_matched)
+        print(f"\nQuery: {q} | Status: {res['status']} ({res['confidence_score']}) | Matched: {file_matched} # {clean_section}")
