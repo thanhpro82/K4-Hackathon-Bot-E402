@@ -1,10 +1,10 @@
 {
   "total_test_cases": 25,
-  "passed_cases": 22,
-  "failed_cases": 3,
-  "pass_rate_percent": 88.0,
-  "high_confidence_responses": 13,
-  "low_confidence_escalations": 12,
+  "passed_cases": 21,
+  "failed_cases": 4,
+  "pass_rate_percent": 84.0,
+  "high_confidence_responses": 14,
+  "low_confidence_escalations": 11,
   "details": [
     {
       "id": 1,
@@ -121,10 +121,10 @@
       "question": "deadline khi nào?",
       "category": "ambiguous",
       "expected_behavior": "ask_clarification",
-      "actual_status": "LOW_CONFIDENCE",
-      "confidence_score": 0.33,
-      "citation": "Tag: `@TA-Support` `@Mod`",
-      "passed": true
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.67,
+      "citation": "`[07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md # 🏁 Gate 1 — Chốt Đề Tài & Thiết Kế]`",
+      "passed": false
     },
     {
       "id": 13,

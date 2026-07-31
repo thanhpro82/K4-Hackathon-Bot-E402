@@ -1,10 +1,10 @@
 # 📊 BÁO CÁO KẾT QUẢ KIỂM THỬ EVAL (LƯỢT 1 - BASELINE)
 
 - **Tổng số Test Cases:** 25 cases (từ `eval/golden_set.json`)
-- **Số case ĐẠT (Passed):** 22 / 25
-- **Tỷ lệ Đạt (Grounded & Escalation Rate):** **88.0%**
-- **Luồng High Confidence (Có căn cứ):** 13 cases
-- **Luồng Low Confidence (Từ chối & Tag TA):** 12 cases
+- **Số case ĐẠT (Passed):** 21 / 25
+- **Tỷ lệ Đạt (Grounded & Escalation Rate):** **84.0%**
+- **Luồng High Confidence (Có căn cứ):** 14 cases
+- **Luồng Low Confidence (Từ chối & Tag TA):** 11 cases
 
 ## Chi Tiết 25 Cases Kiểm Thử:
 
@@ -21,7 +21,7 @@
 | 9 | `bị lỗi ERROR: Repository not found khi git clone thì làm sao?` | answer_with_citation | HIGH_CONFIDENCE | 0.82 | ✅ ĐẠT |
 | 10 | `repo của nhóm thiếu file pyproject.toml thì xử lý thế nào?` | answer_with_citation | HIGH_CONFIDENCE | 0.98 | ✅ ĐẠT |
 | 11 | `nộp bài ở đâu?` | ask_clarification | LOW_CONFIDENCE | 0.5 | ✅ ĐẠT |
-| 12 | `deadline khi nào?` | ask_clarification | LOW_CONFIDENCE | 0.33 | ✅ ĐẠT |
+| 12 | `deadline khi nào?` | ask_clarification | HIGH_CONFIDENCE | 0.67 | ❌ CHƯA ĐẠT |
 | 13 | `lỗi SSH sửa làm sao?` | ask_clarification | HIGH_CONFIDENCE | 0.8 | ❌ CHƯA ĐẠT |
 | 14 | `tạo ticket không được?` | ask_clarification | HIGH_CONFIDENCE | 1.0 | ❌ CHƯA ĐẠT |
 | 15 | `bài tập tuần này làm gì?` | ask_clarification | LOW_CONFIDENCE | 0.5 | ✅ ĐẠT |
