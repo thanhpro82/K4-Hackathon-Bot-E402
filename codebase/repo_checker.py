@@ -80,8 +80,8 @@ class RepoChecker:
 
         owner, repo_name = match.group(1), match.group(2).replace('.git', '')
         
-        # Kiểm tra quy chuẩn đặt tên Repo P-XXX
-        naming_valid = bool(re.match(r'^P-\d+', repo_name, re.IGNORECASE))
+        # Kiểm tra quy chuẩn đặt tên Repo (Hỗ trợ cả định dạng K4-Hackathon-... và P-XXX)
+        naming_valid = bool(re.match(r'^(P-\d+|K[34]-Hackathon-.+)', repo_name, re.IGNORECASE))
 
         results = {
             "repo_name": repo_name,
@@ -137,9 +137,9 @@ class RepoChecker:
         if results.get("error_msg"):
             msg.append(f"❌ **Lỗi:** {results['error_msg']}\n")
 
-        # Cảnh báo tên repo nếu vi phạm quy chuẩn P-XXX
+        # Cảnh báo tên repo nếu vi phạm quy chuẩn
         if not results.get("naming_valid", True):
-            msg.append(f"⚠️ **Cảnh báo tên Repo:** Tên `{results.get('repo_name')}` không tuân thủ quy chuẩn `P-XXX` của khóa học (Ví dụ: `P-042`).\n")
+            msg.append(f"⚠️ **Cảnh báo tên Repo:** Tên `{results.get('repo_name')}` không tuân thủ quy chuẩn `Khóa(K4/K3)-Hackathon-TênNhóm-PhòngLab` hoặc `P-XXX`.\n")
         
         msg.append("📁 **Cấu trúc File Nộp Bắt Buộc:**")
         for f in results["found_files"]:

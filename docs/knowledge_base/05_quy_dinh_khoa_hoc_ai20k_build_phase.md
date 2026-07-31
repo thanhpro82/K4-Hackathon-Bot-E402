@@ -22,7 +22,7 @@
 Việc đặt tên đúng quy chuẩn giúp hệ thống tự động nhận diện thành viên và nhóm bài làm:
 
 *   **Tạo nhóm (Team):** Ghép đội tự do đến hết ngày **25/07**. Sau hạn này, hệ thống sẽ tự động ghép những học viên chưa có đội.
-*   **GitHub Repo:** Đặt theo mẫu `P-XXX` *(Ví dụ: P-042)*.
+*   **GitHub Repo:** Đặt theo cấu trúc `Khóa(K4/K3)-Hackathon-TênNhóm-PhòngLab` *(Ví dụ: K4-Hackathon-Bot-E402)* hoặc `P-XXX` *(Ví dụ: P-042)*.
 *   **Discord Channel:** Đặt theo mẫu `#t-XXX` *(Ví dụ: #t-042)*.
 *   **Tên hiển thị Zoom:** Đặt theo cấu trúc `G-YY-TXXX-Họ và tên` *(Ví dụ: G01-T004-Nguyễn Văn An)*.
 
