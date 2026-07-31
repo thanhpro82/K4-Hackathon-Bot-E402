@@ -464,7 +464,19 @@ const processInput = (text) => {
             console.log("Using Offline RAG Fallback:", err);
             const lowerText = text.toLowerCase();
             
-            // 1. Xử lý lệnh /check-repo trong Offline Mode
+            // 1. Xử lý lệnh /daily trong Offline Mode
+            if (lowerText.includes('/daily') || lowerText === 'daily') {
+                renderHappyPath({
+                    answer: '📝 <b>HƯỚNG DẪN THỰC HIỆN LỆNH /DAILY (STAND-UP LOG):</b><br><br>• <b>Cách dùng:</b> Gõ `/daily` vào khung chat. Điền 2 mục: <i>Yesterday</i> (việc đã hoàn thành hôm qua) & <i>Today</i> (mục tiêu làm hôm nay).<br>• <b>Quyền lợi:</b> Nhận ngay <b>+5 XP</b> cho mỗi lần nộp daily thành công.<br>• <b>Thời hạn:</b> Nộp trước <b>23:59 hàng ngày</b> để ghi nhận tiến độ.',
+                    citation: '07_chiet_xuat_tri_thuc_bot_kute_chinh_thuc.md',
+                    section: 'Mục 2. Lệnh /daily Stand-up Log',
+                    match: 100
+                });
+                State.groundedQueries++;
+                return;
+            }
+
+            // 2. Xử lý lệnh /check-repo trong Offline Mode
             if (lowerText.includes('/check-repo')) {
                 const isGithub = lowerText.includes('github.com');
                 const repoName = isGithub ? (text.match(/github\.com\/[^\/]+\/([^\/\s#]+)/) || [])[1] || "Repo" : "K4-Hackathon-Bot-E402";
