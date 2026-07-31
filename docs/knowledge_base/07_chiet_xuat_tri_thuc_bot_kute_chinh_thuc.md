@@ -14,11 +14,12 @@
 
 ### 🛠️ Hướng Dẫn Setup AI Log Chi Tiết
 1. **Tạo API Keys:** Truy cập `https://phoenix.note.transformerlabs.ai/api-keys` để tạo API Key.
-2. **Clone Repo Team:** Clone Repo của team nằm trong GitHub Org chính thức (`AI20K-Build-Cohort-2` hoặc `AI20K-Build-Phase-Cohort-3`).
+2. **Clone Repo Team:** Clone Repo của team nằm trong GitHub Org chính thức (`AI20K-Build-Phase-Cohort-3`). Tên repo có cú pháp `P-XXX` (XXX là mã dự án).
 3. **Đọc README:** Đọc file README.md hướng dẫn setup Webhook / Hook.
 4. **Kiểm tra trạng thái:**
    - Nhìn dòng `[ai-log] Submitted` xuất hiện trong terminal mỗi khi `git push`.
    - Kiểm tra cột *Last used* trên Dashboard Phoenix Note.
+   - Kiểm tra AI Logs đã submit tại mục AI Logs trên Phoenix Note.
 
 ---
 
@@ -61,5 +62,6 @@
 - **Điểm số & Nhận xét:** Điểm số và nhận xét không hiển thị công khai trên Codelabs.
 
 ### 📅 Lịch Học & Khung Giờ
-- **Office Hours (OH):** Tối Thứ 2 & Thứ 6 (từ 20:00 – 21:00). Không bắt buộc điểm danh nhưng khuyến khích tham gia.
+- **Office Hours (OH):** Tối Thứ 2 & Thứ 6 (từ 20:00 – 21:00, một số buổi đặc biệt có thể đổi sang 09:30 – 10:30 hoặc 19:00 – 21:30). Không bắt buộc điểm danh nhưng khuyến khích tham gia tại kênh Stage.
 - **Workshop:** Tối Thứ 5 & Chủ Nhật.
+- **Build Hours / Mentoring Duty:** Bổ sung vào các buổi chiều từ Tuần 4 trở đi.

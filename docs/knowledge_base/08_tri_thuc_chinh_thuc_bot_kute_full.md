@@ -40,15 +40,15 @@
 - **Cách nhận Role Team Leader (Trưởng nhóm):** Cấp tự động sau khi đăng ký team với BTC (hoặc gõ `/ticket create` để nhờ cấp).
 - **Chức năng các kênh chat:**
   - `#thông-báo-chung`: Cập nhật slide vlearn.dev, bài lab codelabs.vlearn.dev, thông báo vận hành.
-  - `#lý-thuyết`: Forum thảo luận bài giảng (`Lec-<mã buổi>`) nộp bài Pain point -> Baseline -> Target.
-  - `#thực-hành-lab`: Forum bài lab (`Lab-<mã buổi>`) chứa link repo GitHub, Form chấm điểm nhóm, Form pitching.
+  - `#lý-thuyết`: Forum thảo luận bài giảng (`Lec-<mã buổi>`) nộp bài phân tích sản phẩm (Pain point -> Baseline -> Target) hoặc quy trình As-Is / To-Be.
+  - `#thực-hành-lab`: Forum bài lab (`Lab-<mã buổi>`) chứa link repo GitHub, Form chấm điểm nhóm, Form đăng ký pitching.
 
 ---
 
 ## 5. 📅 Lịch Học & Khung Giờ Hoạt Động
 - **Workshop lý thuyết & thực hành:** Tối Thứ 5 & Chủ Nhật.
-- **Office Hours (OH):** Tối Thứ 2 & Thứ 6 (20:00 – 21:00) tại kênh Stage (Không bắt buộc điểm danh).
-- **Mentoring Duty:** Tối Thứ 4 & Thứ 7.
+- **Office Hours (OH):** Tối Thứ 2 & Thứ 6 (20:00 – 21:00, một số buổi đặc biệt có thể đổi sang 09:30 – 10:30 hoặc 19:00 – 21:30) tại hai kênh Stage (Không bắt buộc điểm danh).
+- **Mentoring Duty / Build Hours:** Bổ sung vào các buổi chiều từ Tuần 4 trở đi.
 
 ---
 
