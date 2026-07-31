@@ -379,24 +379,52 @@ const processInput = (text) => {
     setTimeout(() => {
         typing.remove();
         
-        const lowerText = text.toLowerCase();
-        let found = false;
-        
-        for (const item of GoldenSet) {
-            if (item.keywords.some(kw => lowerText.includes(kw))) {
-                renderHappyPath(item);
+        // Thử gọi Flask Backend API live tại http://localhost:5000/api/query
+        fetch('http://localhost:5000/api/query', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ query: text, user_name: "Học Viên 101" })
+        })
+        .then(response => {
+            if (!response.ok) throw new Error("API Network error");
+            return response.json();
+        })
+        .then(data => {
+            if (data.status === "HIGH_CONFIDENCE") {
+                renderHappyPath({
+                    answer: data.answer.replace(/\n/g, '<br>'),
+                    citation: data.citation || "tài-liệu-chính-thức.md",
+                    section: "Nguồn chính thức RAG Backend",
+                    match: Math.round((data.confidence_score || 0.85) * 100)
+                });
                 State.groundedQueries++;
-                found = true;
-                break;
+            } else {
+                renderEscalation(text);
+                State.escalationQueries++;
             }
-        }
+        })
+        .catch(err => {
+            // Fallback RAG Offline nếu API chưa bật
+            console.log("Using Offline RAG Fallback:", err);
+            const lowerText = text.toLowerCase();
+            let found = false;
+            
+            for (const item of GoldenSet) {
+                if (item.keywords.some(kw => lowerText.includes(kw))) {
+                    renderHappyPath(item);
+                    State.groundedQueries++;
+                    found = true;
+                    break;
+                }
+            }
+            
+            if (!found) {
+                renderEscalation(text);
+                State.escalationQueries++;
+            }
+        });
         
-        if (!found) {
-            renderEscalation(text);
-            State.escalationQueries++;
-        }
-        
-    }, 1200 + Math.random() * 800); // Simulate network delay
+    }, 800 + Math.random() * 400); // Simulate response delay
 };
 
 // Event Listeners

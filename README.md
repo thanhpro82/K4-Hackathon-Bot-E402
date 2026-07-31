@@ -5,6 +5,14 @@
 - Thời lượng: **1,5 ngày** (một ngày build + một buổi demo)
 - Nhóm: **4-5 người** · zone tối đa 5 nhóm · thi theo lớp
 
+## 👥 THÀNH VIÊN NHÓM & PHÂN CÔNG (TRACK B)
+
+| STT | Thành viên (Tên thật) | Vai trò | Phần phụ trách trong Repo |
+|---|---|---|---|
+| 1 | **Nguyễn Tuấn Thành** | Product Owner (PO) | Viết `spec.md`, HAX/PAIR Design, Slide Pitching 6 trang, User Validation |
+| 2 | **Trần Quí Đôn** | Dev / Backend Eng | Xây dựng Flask API (`api_server.py`), RAG Engine (`rag_engine.py`), kết nối UI Frontend |
+| 3 | **Nguyễn Ngọc Gia Bảo** | Data / Eval Eng | Data Mining 5,898 tin nhắn, xây Golden Set 25 cases (`golden_set.json`), chạy Eval |
+
 ## Bắt đầu từ đâu?
 
 1. Đọc **`01-de-bai.md`** để chọn hướng và hiểu tiêu chí.

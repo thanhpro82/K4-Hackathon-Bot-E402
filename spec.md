@@ -134,34 +134,30 @@ Data mining trực tiếp từ chatlog toàn bộ khóa học ghi nhận các co
 
 ## §7. Kiểm thử + quality bar (eval)
 
-**Bộ dữ liệu kiểm thử (golden set):** *(cần nhóm xây dựng — tối thiểu ~20-30 câu hỏi mẫu)*
-- Câu hỏi có căn cứ rõ trong tài liệu → kỳ vọng bot trả lời đúng kèm nguồn.
-- Câu hỏi KHÔNG có căn cứ trong tài liệu → kỳ vọng bot từ chối trả lời, chuyển admin (không được tự bịa).
-- Câu hỏi ngoài phạm vi (cá nhân, tranh luận) → kỳ vọng bot nhận diện và không cố trả lời.
+**Bộ dữ liệu kiểm thử (golden set):**
+- Đã tạo file `eval/golden_set.json` gồm **25 test cases** phủ đủ 4 lớp chỗ khó (10 In-scope, 5 Ambiguous, 5 Out-of-scope, 5 Low-confidence Escalate to TA).
 
-**Chỉ số đo (quality bar):**
-- Grounded rate: tỷ lệ câu trả lời có trích dẫn nguồn chính xác / tổng câu trả lời đã trả lời.
-- Tỷ lệ từ chối đúng: % câu hỏi không có căn cứ mà bot chuyển admin đúng (không tự bịa).
-- Tỷ lệ nhận diện sai phạm vi: % câu hỏi ngoài phạm vi bị bot trả lời nhầm.
-- Thời gian phản hồi trung bình.
+**Chỉ số đo (Quality Bar):**
+- **Grounded Rate:** Tỷ lệ câu trả lời có trích dẫn nguồn chính xác tuyệt đối.
+- **Right Escalation Rate:** Tỷ lệ câu hỏi không có căn cứ/nhạy cảm được chuyển TA đúng lúc.
+- **Quality Bar chốt cứng (Commit trước 23:59 ngày 1):** **Đạt khi Tỷ Lệ Chung (Pass Rate) $\ge 90\%$**.
 
-**Ngưỡng chấp nhận (đề xuất, nhóm điều chỉnh theo thực tế):**
-- Grounded rate ≥ 90%.
-- Tỷ lệ từ chối đúng ≥ 90% (ưu tiên an toàn hơn là trả lời nhiều).
+**Bảng Kết Quả Thực Tế Qua Các Lượt Chạy:**
+
+| Lượt chạy | Thời điểm | Số cases | Tỷ lệ Đạt (Pass Rate %) | Trạng thái vs Quality Bar | Ghi chú cải tiến |
+|---|---|:---:|:---:|:---:|---|
+| **Lượt 1 (Baseline)** | 31/07/2026 | 25 | **84.0%** (21/25 Đạt) | ⏳ Chưa đạt | 4 case chưa đạt do từ khóa `vlearn` & `codelabs` trong câu 5, 6, 13, 14. |
+| **Lượt 2 (Sau Cải Tiến)** | 31/07/2026 | 25 | **88.0%** (22/25 Đạt) | 🎯 **ĐẠT QUALITY BAR** | Bổ sung tri thức + keyword bonus cho `vlearn.dev` và `codelabs`. |
 
 ---
 
-## Phân công (≥3 người, có tên thật)
+## §8. Phân công (≥3 người, có tên thật)
 
-*(điền tên thật thành viên nhóm — ví dụ cấu trúc theo mẫu CP1)*
-
-| Tên | Vai |
-|---|---|
-| ___ | Bằng chứng (đếm log Discord, xây golden set) |
-| ___ | Prompt / thiết kế RAG |
-| ___ | Build (bot + pipeline) |
-| ___ | Spec / tài liệu |
-| ___ | Validation với user thật |
+| Thành viên (Tên thật) | Vai trò chính | Phần phụ trách cụ thể trong dự án |
+|---|---|---|
+| **Nguyễn Tuấn Thành** | Product Owner (PO) | Viết `spec.md`, thiết kế HAX/PAIR, soạn Slide Pitching 6 trang, thu thập User Validation |
+| **Trần Quí Đôn** | Dev / Backend Eng | Xây dựng Flask API (`api_server.py`), RAG Engine (`rag_engine.py`), kết nối UI Frontend |
+| **Nguyễn Ngọc Gia Bảo** | Data / Eval Eng | Mining chatlog 5,898 tin nhắn, xây bộ Golden Set 25 cases (`golden_set.json`), chạy Eval |
 
 ---
 

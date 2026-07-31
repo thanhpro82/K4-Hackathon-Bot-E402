@@ -1,0 +1,260 @@
+{
+  "total_test_cases": 25,
+  "passed_cases": 22,
+  "failed_cases": 3,
+  "pass_rate_percent": 88.0,
+  "high_confidence_responses": 13,
+  "low_confidence_escalations": 12,
+  "details": [
+    {
+      "id": 1,
+      "question": "deadline nộp bài CP4 là khi nào?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.83,
+      "citation": "`[01_quy_dinh_hackathon_va_lich_trinh.md # 2. Quy Định Nộp Bài & Cấu Trúc Repo Bắt Buộc]`",
+      "passed": true
+    },
+    {
+      "id": 2,
+      "question": "lịch học Workshop tuần này vào thứ mấy?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.9,
+      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 2. Nhịp Vận Hành Hàng Tuần (Weekly Schedule)]`",
+      "passed": true
+    },
+    {
+      "id": 3,
+      "question": "lịch Mentoring Duty kiểm tra tiến độ là khi nào?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.9,
+      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 2. Nhịp Vận Hành Hàng Tuần (Weekly Schedule)]`",
+      "passed": true
+    },
+    {
+      "id": 4,
+      "question": "cách tạo ticket hỗ trợ trên Discord gõ lệnh gì?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.9,
+      "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 1. Danh Sách Lệnh Discord Thường Dùng (Command Cheatsheet)]`",
+      "passed": true
+    },
+    {
+      "id": 5,
+      "question": "link xem slide bài giảng ở đâu?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.97,
+      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 4. Hệ Thống Nền Tảng Học Tập & Nộp Bài]`",
+      "passed": true
+    },
+    {
+      "id": 6,
+      "question": "trang làm bài thực hành Codelabs là gì?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 1.0,
+      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 4. Hệ Thống Nền Tảng Học Tập & Nộp Bài]`",
+      "passed": true
+    },
+    {
+      "id": 7,
+      "question": "cách đặt tên Zoom học tập thế nào cho đúng?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.9,
+      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 3. Quy Định Đặt Tên Chuẩn (Naming Conventions)]`",
+      "passed": true
+    },
+    {
+      "id": 8,
+      "question": "tên repo GitHub của nhóm phải đặt như thế nào?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.9,
+      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # 3. Quy Định Đặt Tên Chuẩn (Naming Conventions)]`",
+      "passed": true
+    },
+    {
+      "id": 9,
+      "question": "bị lỗi ERROR: Repository not found khi git clone thì làm sao?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.82,
+      "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 1. Danh Sách Lệnh Discord Thường Dùng (Command Cheatsheet)]`",
+      "passed": true
+    },
+    {
+      "id": 10,
+      "question": "repo của nhóm thiếu file pyproject.toml thì xử lý thế nào?",
+      "category": "happy_path",
+      "expected_behavior": "answer_with_citation",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.98,
+      "citation": "`[04_huong_dan_moi_truong_python_va_ai_log.md # Câu hỏi: \"Repo của nhóm không có file pyproject.toml thì sao?\"]`",
+      "passed": true
+    },
+    {
+      "id": 11,
+      "question": "nộp bài ở đâu?",
+      "category": "ambiguous",
+      "expected_behavior": "ask_clarification",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.5,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 12,
+      "question": "deadline khi nào?",
+      "category": "ambiguous",
+      "expected_behavior": "ask_clarification",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.33,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 13,
+      "question": "lỗi SSH sửa làm sao?",
+      "category": "ambiguous",
+      "expected_behavior": "ask_clarification",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.8,
+      "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 1. Danh Sách Lệnh Discord Thường Dùng (Command Cheatsheet)]`",
+      "passed": false
+    },
+    {
+      "id": 14,
+      "question": "tạo ticket không được?",
+      "category": "ambiguous",
+      "expected_behavior": "ask_clarification",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 1.0,
+      "citation": "`[02_cu_phap_lenh_discord_va_tao_ticket.md # 1. Danh Sách Lệnh Discord Thường Dùng (Command Cheatsheet)]`",
+      "passed": false
+    },
+    {
+      "id": 15,
+      "question": "bài tập tuần này làm gì?",
+      "category": "ambiguous",
+      "expected_behavior": "ask_clarification",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.5,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 16,
+      "question": "viết hộ mình đoạn code RAG bằng Python với?",
+      "category": "out_of_scope",
+      "expected_behavior": "refuse_politely",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.33,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 17,
+      "question": "giá khóa học AI20K tiếp theo là bao nhiêu?",
+      "category": "out_of_scope",
+      "expected_behavior": "escalate_to_ta",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.44,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 18,
+      "question": "thời tiết hôm nay thế nào?",
+      "category": "out_of_scope",
+      "expected_behavior": "refuse_politely",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.5,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 19,
+      "question": "bạn là mô hình GPT-4 hay Claude 3.5?",
+      "category": "out_of_scope",
+      "expected_behavior": "answer_scope",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.1,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 20,
+      "question": "test test test test test",
+      "category": "out_of_scope",
+      "expected_behavior": "rate_limit_warning",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.0,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 21,
+      "question": "nếu nhóm mình nộp trễ CP4 5 phút thì có bị trừ điểm không?",
+      "category": "low_confidence",
+      "expected_behavior": "escalate_to_ta",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.61,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 22,
+      "question": "mình muốn đổi sang nhóm khác bây giờ được không?",
+      "category": "low_confidence",
+      "expected_behavior": "escalate_to_ta",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.3,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 23,
+      "question": "điểm thi của nhóm P-012 là bao nhiêu?",
+      "category": "low_confidence",
+      "expected_behavior": "refuse_sensitive",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.44,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    },
+    {
+      "id": 24,
+      "question": "tài khoản VLearn của mình bị khóa không đăng nhập được?",
+      "category": "low_confidence",
+      "expected_behavior": "escalate_to_ta",
+      "actual_status": "HIGH_CONFIDENCE",
+      "confidence_score": 0.76,
+      "citation": "`[05_quy_dinh_khoa_hoc_ai20k_build_phase.md # Quy định nộp bài trên Codelabs (`codelabs.vlearn.dev`):]`",
+      "passed": false
+    },
+    {
+      "id": 25,
+      "question": "thầy giáo dạy buổi tiếp theo là ai?",
+      "category": "low_confidence",
+      "expected_behavior": "escalate_to_ta",
+      "actual_status": "LOW_CONFIDENCE",
+      "confidence_score": 0.38,
+      "citation": "Tag: `@TA-Support` `@Mod`",
+      "passed": true
+    }
+  ]
+}
